@@ -1,0 +1,24 @@
+[MAPA113]
+Name=Mapa Desconocido
+MusicNum=0
+MagiaSinefecto=0
+InviSinEfecto=0
+ResuSinEfecto=0
+NoEncriptarMP=0
+Terreno=BOSQUE
+Zona=DUNGEON
+Restringir=No
+BackUp= 0
+Pk=0
+[MAPA117]
+MagiaSinefecto=0
+InviSinEfecto=0
+ResuSinEfecto=0
+NoEncriptarMP=0
+BackUp= 0
+Pk=0
+Name=Mapa Desconocido
+MusicNum=0
+Terreno=DESIERTO
+Zona=DUNGEON
+Restringir=No

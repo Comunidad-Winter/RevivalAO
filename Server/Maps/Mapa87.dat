@@ -1,0 +1,13 @@
+[Mapa87]
+Name=Sala de retos 2v2
+MusicNum=1
+StartPos=0-0-0
+Restringir=No
+Terreno=DESIERTO
+Zona=DUNGEON
+BackUp= 0
+MagiaSinefecto=0
+InviSinEfecto=0
+ResuSinEfecto=0
+NoEncriptarMP=0
+Pk=1

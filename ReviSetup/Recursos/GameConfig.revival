@@ -1,0 +1,7 @@
+[CONFIG]
+bDinamic=0
+bFPS=2
+bNoMusic=0
+bNoSound=0
+bUseVideo=1
+byMemory=0

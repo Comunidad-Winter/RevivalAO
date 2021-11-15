@@ -1,0 +1,27 @@
+31/12/2010 14:47:40 Se ha recuperado exitosamente la contraseña de LOAS - Se ha enviado la contraseña a SONSCORPIO@MSN.COM
+31/12/2010 14:53:18 El mail del Charfile LOAS Mail: SONSCORPIO@MSN.COM No coincide con el mail de recuperación - Mail: sonscorpio@msn.com Imposible de recuperar.
+31/12/2010 14:57:23 El numero de usuarios, no es igual al numero de  codigo de seguridad, se ha cancelado el proceso de recuperación.
+31/12/2010 15:08:42 Se ha recuperado exitosamente la contraseña de LOAS - Se ha enviado la contraseña a SONSCORPIO@MSN.COM
+31/12/2010 15:13:02 Se ha recuperado exitosamente la contraseña de LOAS - Se ha enviado la contraseña a SONSCORPIO@MSN.COM
+02/01/2011 19:38:20 El mail del Charfile loas Mail: SONSCORPIO@MSN.COM No coincide con el mail de recuperación - Mail: sonscorpio@msn.com Imposible de recuperar.
+02/01/2011 19:41:42 Se ha recuperado exitosamente la contraseña de loas - Se ha enviado la contraseña a sonscorpio@msn.com
+23/07/2011 15:35:00 Posible error : nombre del Servidor incorrecto o número de puerto incorrecto - -2147220973
+23/07/2011 15:35:00 Se ha recuperado exitosamente la contraseña de tukiql - Se ha enviado la contraseña a joan.calderon@quanti.cc
+23/07/2011 15:36:12 Posible error : nombre del Servidor incorrecto o número de puerto incorrecto - -2147220973
+23/07/2011 15:36:12 Se ha recuperado exitosamente la contraseña de tukiql - Se ha enviado la contraseña a joan.calderon@quanti.cc
+23/07/2011 15:37:13 No hay personajes que recuperar
+23/07/2011 15:37:13 No hay personajes que recuperar
+23/07/2011 15:37:13 No hay personajes que recuperar
+23/07/2011 15:38:51 No hay personajes que recuperar
+23/07/2011 15:38:51 No hay personajes que recuperar
+23/07/2011 15:38:51 No hay personajes que recuperar
+23/07/2011 15:40:34 Posible error : error en la el nombre de usuario, o en el password  - -2147220975
+23/07/2011 15:40:34 Se ha recuperado exitosamente la contraseña de tukiql - Se ha enviado la contraseña a joan.calderon@quanti.cc
+23/07/2011 15:41:35 No hay personajes que recuperar
+23/07/2011 15:41:35 No hay personajes que recuperar
+23/07/2011 15:41:35 No hay personajes que recuperar
+23/07/2011 15:42:41 Se ha recuperado exitosamente la contraseña de tukiql - Se ha enviado la contraseña a joan.calderon@quanti.cc
+28/07/2011 21:48:19 Se ha recuperado exitosamente la contraseña de lugh - Se ha enviado la contraseña a JOAN.CALDERON@DLYC.CL
+28/07/2011 21:49:26 No hay personajes que recuperar
+28/07/2011 21:49:26 No hay personajes que recuperar
+28/07/2011 21:49:26 No hay personajes que recuperar

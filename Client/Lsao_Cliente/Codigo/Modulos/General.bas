@@ -717,7 +717,7 @@ On Error Resume Next
         cur$ = ReadField(i, RawServersList, Asc(";"))
         ServersLst(i).ip = ReadField(1, cur$, Asc(":"))
         ServersLst(i).Puerto = ReadField(2, cur$, Asc(":"))
-        ServersLst(i).Desc = ReadField(4, cur$, Asc(":"))
+        ServersLst(i).desc = ReadField(4, cur$, Asc(":"))
         ServersLst(i).PassRecPort = ReadField(3, cur$, Asc(":"))
     Next i
     
@@ -733,147 +733,160 @@ Public Function CurServerPasRecPort() As Integer
 End Function
 
 Public Function CurServerIp() As String
-CurServerIp = "201.212.2.35"
+CurServerIp = "127.0.0.1"
 End Function
 
 Public Function CurServerPort() As Integer
 CurServerPort = "7667"
 End Function
 
-
 Sub Main()
-Set AodefConv = New AoDefenderConverter
-AoDefAntiShInitialize
-AoDefOriginalClientName = "RevivalAo"
-AoDefClientName = App.exeName
-AoDefDetectName = App.exeName
+    Set AodefConv = New AoDefenderConverter
+    AoDefAntiShInitialize
+    AoDefOriginalClientName = "RevivalAo"
+    AoDefClientName = App.exeName
+    AoDefDetectName = App.exeName
 
-TemporalFile = App.Path & "\..\Recursos\Temp"
-If AoDefChangeName Then
-  Call AoDefClientOn
- End
-End If
-If AoDefDebugger Then
-    Call AoDefAntiDebugger
-   End
-End If
-If AoDefMultiClient Then
-    Call AoDefMultiClientOn
-   End
-End If
+    TemporalFile = App.Path & "\..\Recursos\Temp"
 
-'TODO : Cambiar esto cuando se corrija el bug de los timers
-'On Error GoTo ManejadorErrores
+#If Seguridad = 1 Then
 
-On Error Resume Next
+    If AoDefChangeName Then
+        Call AoDefClientOn
+        End
 
-'[MaTeO 11]
-Dim CursorDir2 As String
-Dim CursorDir As String
-Dim Cursor As Long
- 'estas?
- 
-CursorDir = App.Path & "\..\Recursos\diablo.cur"
-CursorDir2 = App.Path & "\..\Recursos\barita.cur"
-hSwapCursor = SetClassLong(frmMain.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmMain.hlst.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir2))
-hSwapCursor = SetClassLong(frmMain.PanelDer.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmBancoObj.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmBorrar.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCambiaMotd.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCantidad.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCaptions.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCargando.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCarp.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCharInfo.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmComerciar.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmComerciarUsu.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmCommet.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmConnect.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(FrmConsolaTorneo.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmEligeAlineacion.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmEntrenador.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmEstadisticas.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmForo.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildAdm.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildBrief.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildDetails.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildFoundation.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildLeader.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildNews.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildSol.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmGuildURL.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmHerrero.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmKeypad.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmMapa.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmMensaje.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmMSG.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmOldPersonaje.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmOpciones.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmPanelGm.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmPasswdSinPadrinos.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmPeaceProp.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(FrmProcesos.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(FrmProcesos.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmRecuperar.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmSkills3.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmSpawnList.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmtip.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(FrmTransferir.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmUserRequest.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmSoporte.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmSoporteGm.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmSoporteResp.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmRank.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
-hSwapCursor = SetClassLong(frmContra.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    End If
+
+    If AoDefDebugger Then
+        Call AoDefAntiDebugger
+        End
+
+    End If
+
+    If AoDefMultiClient Then
+        Call AoDefMultiClientOn
+        End
+
+    End If
     
-'[/MaTeO 11]
-
-If FindPreviousInstance Then
-Call MsgBox("Ya está siendo ejecutado RevivalAo!.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
-'End
-End If
-Direccion1 = "C:\WINDOWS\system32\drivers"
-Direccion2 = "C:\WINDOWS\system32"
-If FileExist(App.Path & "\autoupdate.exe", vbArchive) Then Shell (App.Path & "\autoupdate.exe")
-
-#If SeguridadAlkon Then
-    InitSecurity
 #End If
+
+    'TODO : Cambiar esto cuando se corrija el bug de los timers
+    'On Error GoTo ManejadorErrores
+
+    On Error Resume Next
+
+    '[MaTeO 11]
+    Dim CursorDir2 As String
+
+    Dim CursorDir  As String
+
+    Dim Cursor     As Long
+
+    'estas?
+ 
+    CursorDir = App.Path & "\..\Recursos\diablo.cur"
+    CursorDir2 = App.Path & "\..\Recursos\barita.cur"
+    hSwapCursor = SetClassLong(frmMain.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmMain.hlst.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir2))
+    hSwapCursor = SetClassLong(frmMain.PanelDer.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmBancoObj.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmBorrar.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCambiaMotd.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCantidad.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCaptions.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCargando.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCarp.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCharInfo.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmComerciar.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmComerciarUsu.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmCommet.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmConnect.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(FrmConsolaTorneo.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmEligeAlineacion.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmEntrenador.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmEstadisticas.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmForo.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildAdm.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildBrief.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildDetails.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildFoundation.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildLeader.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildNews.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildSol.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmGuildURL.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmHerrero.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmKeypad.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmMapa.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmMensaje.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmMSG.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmOldPersonaje.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmOpciones.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmPanelGm.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmPasswdSinPadrinos.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmPeaceProp.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(FrmProcesos.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(FrmProcesos.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmRecuperar.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmSkills3.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmSpawnList.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmtip.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(FrmTransferir.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmUserRequest.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmSoporte.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmSoporteGm.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmSoporteResp.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmRank.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    hSwapCursor = SetClassLong(frmContra.hwnd, GLC_HCURSOR, LoadCursorFromFile(CursorDir))
+    
+    '[/MaTeO 11]
+
+    If FindPreviousInstance Then
+        Call MsgBox("Ya está siendo ejecutado RevivalAo!.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
+
+        'End
+    End If
+
+    Direccion1 = "C:\WINDOWS\system32\drivers"
+    Direccion2 = "C:\WINDOWS\system32"
+
+    If FileExist(App.Path & "\autoupdate.exe", vbArchive) Then Shell (App.Path & "\autoupdate.exe")
+
+    #If SeguridadAlkon Then
+        InitSecurity
+    #End If
 
     Call LeerLineaComandos
     
     Dim EstaBloqueado As Byte
+
     EstaBloqueado = Val(GetSetting("SYSTEMRE", "VES", "ID"))
+
     If EstaBloqueado = 11231 Then
-    Call MsgBox("Tu Cliente ha sido Bloqueado, Consulta a un Game Master para Solucionarlo", vbCritical + vbOKOnly)
-    End
+        Call MsgBox("Tu Cliente ha sido Bloqueado, Consulta a un Game Master para Solucionarlo", vbCritical + vbOKOnly)
+        End
+
     End If
     
-   ' If App.PrevInstance Then
+    ' If App.PrevInstance Then
     '    Call MsgBox("RevivalAo ya esta corriendo! No es posible correr otra instancia del juego. Haga click en Aceptar para salir.", vbApplicationModal + vbInformation + vbOKOnly, "Error al ejecutar")
-     '   End
+    '   End
     'End If
-
     
-'ListApps2
-'verify_cheats2
-'implemento la nueva seguridad (NicoNZ)
+    'ListApps2
+    'verify_cheats2
+    'implemento la nueva seguridad (NicoNZ)
 
+    Uclickear = True
+    DialogosClanes.Activo = False
+    PuedeUclickear = True
+    Msn = True
 
+    Dim f              As Boolean
 
+    Dim ulttick        As Long, esttick As Long
 
-
-
-
-Uclickear = True
-DialogosClanes.Activo = False
-PuedeUclickear = True
-Msn = True
-
-Dim f As Boolean
-Dim ulttick As Long, esttick As Long
-Dim timers(1 To 2) As Long
+    Dim timers(1 To 2) As Long
 
     'usaremos esto para ayudar en los parches
     Call SaveSetting("ArgentumOnlineCliente", "Init", "Path", App.Path & "\")
@@ -881,15 +894,15 @@ Dim timers(1 To 2) As Long
     ChDrive App.Path
     ChDir App.Path
 
-Dim fMD5HushYo As String * 32
+    Dim fMD5HushYo As String * 32
+
     fMD5HushYo = MD5File(App.Path & "\" & App.exeName & ".exe")
     MD5HushYo = txtOffset(hexMd52Asc(fMD5HushYo), 55) '<--- Mira que esto no funciona, ¿lo necesitas? nidea, pero dejalo ai porsiacaso xD
     
     Debug.Print fMD5HushYo
     
     'Cargamos el archivo de configuracion inicial
-   Config_Inicio = LeerGameIni()
-    
+    Config_Inicio = LeerGameIni()
     
     Call LoadClientSetup
 
@@ -905,42 +918,42 @@ Dim fMD5HushYo As String * 32
     frmCargando.Refresh
     
     frmConnect.version = "v" & App.Major & "." & App.Minor & " Build: " & App.Revision
-    AddtoRichTextBox frmCargando.Status, "Buscando servidores....", 0, 0, 0, 0, 0, 1
+    AddtoRichTextBox frmCargando.status, "Buscando servidores....", 0, 0, 0, 0, 0, 1
 
-#If UsarWrench = 1 Then
-    frmMain.Socket1.Startup
-#End If
+    #If UsarWrench = 1 Then
+        frmMain.Socket1.Startup
+    #End If
 
-'TODO : esto de ServerRecibidos no se podría sacar???
+    'TODO : esto de ServerRecibidos no se podría sacar???
     ServersRecibidos = True
     
-    AddtoRichTextBox frmCargando.Status, "Encontrado", , , , 1
-    AddtoRichTextBox frmCargando.Status, "Iniciando constantes...", 0, 0, 0, 0, 0, 1
+    AddtoRichTextBox frmCargando.status, "Encontrado", , , , 1
+    AddtoRichTextBox frmCargando.status, "Iniciando constantes...", 0, 0, 0, 0, 0, 1
     
     Call InicializarNombres
     
     frmOldPersonaje.NameTxt.Text = Config_Inicio.Name
-    frmOldPersonaje.PasswordTXT.Text = ""
+    frmOldPersonaje.PasswordTxt.Text = ""
     'anda a saber si esta ierda de visual basic tira error por todo
-    AddtoRichTextBox frmCargando.Status, "Hecho", , , , 1
+    AddtoRichTextBox frmCargando.status, "Hecho", , , , 1
     
     IniciarObjetosDirectX
     
-    AddtoRichTextBox frmCargando.Status, "Cargando Sonidos....", 0, 0, 0, 0, 0, 1
-    AddtoRichTextBox frmCargando.Status, "Hecho", , , , 1
+    AddtoRichTextBox frmCargando.status, "Cargando Sonidos....", 0, 0, 0, 0, 0, 1
+    AddtoRichTextBox frmCargando.status, "Hecho", , , , 1
 
-Dim loopc As Integer
+    Dim loopc As Integer
 
-lastTime = GetTickCount
+    lastTime = GetTickCount
 
     Call InitTileEngine(frmMain.hwnd, frmMain.MainViewShp.Top, frmMain.MainViewShp.Left, 32, 32, Round(frmMain.MainViewShp.Height / 32), Round(frmMain.MainViewShp.Width / 32), 9)
     
-    Call AddtoRichTextBox(frmCargando.Status, "Creando animaciones extra....")
+    Call AddtoRichTextBox(frmCargando.status, "Creando animaciones extra....")
     
     Call CargarAnimsExtra
     Call CargarTips
 
-UserMap = 1
+    UserMap = 1
 
     Call CargarArrayLluvia
     Call CargarAnimArmas
@@ -948,19 +961,19 @@ UserMap = 1
     Call CargarVersiones
     Call CargarColores
     
-#If SeguridadAlkon Then
-    CualMI = 0
-    Call InitMI
-#End If
+    #If SeguridadAlkon Then
+        CualMI = 0
+        Call InitMI
+    #End If
 
-    AddtoRichTextBox frmCargando.Status, "                    ¡Bienvenido a RevivalAo!", , , , 1
+    AddtoRichTextBox frmCargando.status, "                    ¡Bienvenido a RevivalAo!", , , , 1
     
     Unload frmCargando
     
     'Inicializamos el sonido
-    Call AddtoRichTextBox(frmCargando.Status, "Iniciando DirectSound....", 0, 0, 0, 0, 0, True)
+    Call AddtoRichTextBox(frmCargando.status, "Iniciando DirectSound....", 0, 0, 0, 0, 0, True)
     Call Audio.Initialize(DirectX, frmMain.hwnd, App.Path & "\" & Config_Inicio.DirSonidos & "\", App.Path & "\" & Config_Inicio.DirMusica & "\")
-    Call AddtoRichTextBox(frmCargando.Status, "Hecho", , , , 1, , False)
+    Call AddtoRichTextBox(frmCargando.status, "Hecho", , , , 1, , False)
     
     'Inicializamos el inventario gráfico
     Call inventario.Initialize(DirectDraw, frmMain.picInv)
@@ -974,13 +987,13 @@ UserMap = 1
     
     frmConnect.Visible = True
 
-'TODO : Esto va en Engine Initialization
+    'TODO : Esto va en Engine Initialization
     MainViewRect.Left = MainViewLeft
     MainViewRect.Top = MainViewTop
     MainViewRect.Right = MainViewRect.Left + MainViewWidth
     MainViewRect.Bottom = MainViewRect.Top + MainViewHeight
     
-'TODO : Esto va en Engine Initialization
+    'TODO : Esto va en Engine Initialization
     MainDestRect.Left = TilePixelWidth * TileBufferSize - TilePixelWidth
     MainDestRect.Top = TilePixelHeight * TileBufferSize - TilePixelHeight
     MainDestRect.Right = MainDestRect.Left + MainViewWidth
@@ -992,85 +1005,108 @@ UserMap = 1
     pausa = False
     
     Do While prgRun
+
         'Sólo dibujamos si la ventana no está minimizada
         If frmMain.WindowState <> 1 And frmMain.Visible Then
             Call ShowNextFrame
             
             'Play ambient sounds
             Call RenderSounds
+
         End If
         
-'TODO : Porque el pausado de 20 ms???
+        'TODO : Porque el pausado de 20 ms???
         'If GetTickCount - lastTime > 20 Then
-            If Not pausa And frmMain.Visible And Not frmForo.Visible And Not frmComerciar.Visible And Not frmComerciarUsu.Visible And Not frmBancoObj.Visible Then
-                CheckKeys
-                lastTime = GetTickCount
-            End If
+        If Not pausa And frmMain.Visible And Not frmForo.Visible And Not frmComerciar.Visible And Not frmComerciarUsu.Visible And Not frmBancoObj.Visible Then
+            CheckKeys
+            lastTime = GetTickCount
+
+        End If
+
         'End If
         
         '[MaTeO]
         If VelocidadLimiter <> 0 Then
+
             While (GetTickCount - lFrameTimer) \ VelocidadLimiter < FramesPerSecCounter
+
                 Sleep 5
             Wend
+
         End If
+
         '[/MaTeO]
         
         'FPS Counter - mostramos las FPS
         If GetTickCount - lFrameTimer >= 1000 Then
             FramesPerSec = FramesPerSecCounter
             
-            
             FramesPerSecCounter = 0
             lFrameTimer = GetTickCount
+
         End If
         
-'TODO : Sería mejor comparar el tiempo desde la última vez que se hizo hasta el actual SOLO cuando se precisa. Además evitás el corte de intervalos con 2 golpes seguidos.
+        'TODO : Sería mejor comparar el tiempo desde la última vez que se hizo hasta el actual SOLO cuando se precisa. Además evitás el corte de intervalos con 2 golpes seguidos.
         'Sistema de timers renovado:
 
         esttick = GetTickCount
+
         If ulttick <> 0 Then
+
             For loopc = 1 To UBound(timers)
                 timers(loopc) = timers(loopc) + (esttick - ulttick)
+
                 'Timer de trabajo
                 If timers(1) >= tUs Then
                     timers(1) = 0
                     NoPuedeUsar = False
+
                 End If
+
                 'timer de attaque (77)
                 If timers(2) >= tAt Then
                     timers(2) = 0
                     UserCanAttack = 1
                     UserPuedeRefrescar = True
+
                 End If
+
             Next loopc
+
         End If
+
         ulttick = GetTickCount
         
-#If SeguridadAlkon Then
-        Call CheckSecurity
-#End If
+        #If SeguridadAlkon Then
+            Call CheckSecurity
+        #End If
         
         DoEvents
     Loop
  
     EngineRun = False
     frmCargando.Show
-    AddtoRichTextBox frmCargando.Status, "Liberando recursos...", 0, 0, 0, 0, 0, 1
+    AddtoRichTextBox frmCargando.status, "Liberando recursos...", 0, 0, 0, 0, 0, 1
     LiberarObjetosDX
 
-'TODO : Esto debería ir en otro lado como al cambair a esta res
+    'TODO : Esto debería ir en otro lado como al cambair a esta res
     If Not bNoResChange Then
+
         Dim typDevM As typDevMODE
-        Dim lRes As Long
+
+        Dim lRes    As Long
         
         lRes = EnumDisplaySettings(0, 0, typDevM)
+
         With typDevM
             .dmFields = DM_PELSWIDTH Or DM_PELSHEIGHT
             .dmPelsWidth = oldResWidth
             .dmPelsHeight = oldResHeight
+
         End With
+
         lRes = ChangeDisplaySettings(typDevM, CDS_TEST)
+
     End If
 
     'Destruimos los objetos públicos creados
@@ -1079,9 +1115,9 @@ UserMap = 1
     Set DialogosClanes = Nothing
     Set Audio = Nothing
     Set inventario = Nothing
-#If SeguridadAlkon Then
-    Set md5 = Nothing
-#End If
+    #If SeguridadAlkon Then
+        Set md5 = Nothing
+    #End If
     
     Call UnloadAllForms
     
@@ -1089,15 +1125,16 @@ UserMap = 1
     Config_Inicio.tip = tipf
     Call EscribirGameIni(Config_Inicio)
     
-#If SeguridadAlkon Then
-    DeinitSecurity
-#End If
-End
+    #If SeguridadAlkon Then
+        DeinitSecurity
+    #End If
+    End
 
 ManejadorErrores:
     MsgBox "Ha ocurrido un error irreparable, el cliente se cerrará."
     LogError "Contexto:" & err.HelpContext & " Desc:" & err.Description & " Fuente:" & err.Source
     End
+
 End Sub
 
 Sub WriteVar(ByVal file As String, ByVal Main As String, ByVal Var As String, ByVal value As String)
